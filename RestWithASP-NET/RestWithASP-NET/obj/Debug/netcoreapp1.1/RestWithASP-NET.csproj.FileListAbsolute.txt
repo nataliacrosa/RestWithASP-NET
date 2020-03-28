@@ -1,0 +1,11 @@
+C:\MeusProjetos\RestWithASP-NET\RestWithASP-NET\RestWithASP-NET\bin\Debug\netcoreapp1.1\RestWithASP-NET.deps.json
+C:\MeusProjetos\RestWithASP-NET\RestWithASP-NET\RestWithASP-NET\bin\Debug\netcoreapp1.1\RestWithASP-NET.runtimeconfig.json
+C:\MeusProjetos\RestWithASP-NET\RestWithASP-NET\RestWithASP-NET\bin\Debug\netcoreapp1.1\RestWithASP-NET.runtimeconfig.dev.json
+C:\MeusProjetos\RestWithASP-NET\RestWithASP-NET\RestWithASP-NET\bin\Debug\netcoreapp1.1\RestWithASP-NET.dll
+C:\MeusProjetos\RestWithASP-NET\RestWithASP-NET\RestWithASP-NET\bin\Debug\netcoreapp1.1\RestWithASP-NET.pdb
+C:\MeusProjetos\RestWithASP-NET\RestWithASP-NET\RestWithASP-NET\obj\Debug\netcoreapp1.1\RestWithASP-NET.csprojAssemblyReference.cache
+C:\MeusProjetos\RestWithASP-NET\RestWithASP-NET\RestWithASP-NET\obj\Debug\netcoreapp1.1\RestWithASP-NET.csproj.CoreCompileInputs.cache
+C:\MeusProjetos\RestWithASP-NET\RestWithASP-NET\RestWithASP-NET\obj\Debug\netcoreapp1.1\RestWithASP-NET.AssemblyInfoInputs.cache
+C:\MeusProjetos\RestWithASP-NET\RestWithASP-NET\RestWithASP-NET\obj\Debug\netcoreapp1.1\RestWithASP-NET.AssemblyInfo.cs
+C:\MeusProjetos\RestWithASP-NET\RestWithASP-NET\RestWithASP-NET\obj\Debug\netcoreapp1.1\RestWithASP-NET.dll
+C:\MeusProjetos\RestWithASP-NET\RestWithASP-NET\RestWithASP-NET\obj\Debug\netcoreapp1.1\RestWithASP-NET.pdb
