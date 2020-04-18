@@ -15,6 +15,10 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Rewrite;
 using RestWithASP_NET.Security.Configuration;
 using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using RestWithASP_NET.Repository;
+using RestWithASP_NET.Repository.Implementattions;
 
 namespace RestWithASP_NET
 {
@@ -40,11 +44,38 @@ namespace RestWithASP_NET
 
             ExecuteMigrations(connectionString);
 
-            var tokenConfiguration = new TokenConfiguration();
+            var signingConfigurations = new SigningConfigurations();
+            services.AddSingleton(signingConfigurations);
 
+            var tokenConfigurations = new TokenConfiguration();
             new ConfigureFromConfigurationOptions<TokenConfiguration>(
-                _configuration.GetSection("TokenConfigurations")).Configure(tokenConfiguration);
+                _configuration.GetSection("TokenConfigurations")).Configure(tokenConfigurations);
 
+            services.AddSingleton(tokenConfigurations);
+
+            services.AddAuthentication(authOptions =>
+            {
+                authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer(bearerOptions => {
+                var paramsValidation = bearerOptions.TokenValidationParameters;
+                paramsValidation.IssuerSigningKey = signingConfigurations.Key;
+                paramsValidation.ValidAudience = tokenConfigurations.Audience;
+                paramsValidation.ValidIssuer = tokenConfigurations.Issuer;
+
+                paramsValidation.ValidateIssuerSigningKey = true;
+
+                paramsValidation.ValidateLifetime = true;
+
+                paramsValidation.ClockSkew = TimeSpan.Zero;
+            });
+
+            services.AddAuthorization(auth =>
+            {
+                auth.AddPolicy("Bearer", new AuthorizationPolicyBuilder()
+                .AddAuthenticationSchemes(JwtBearerDefaults.AuthenticationScheme)
+                .RequireAuthenticatedUser().Build());
+            });
 
             services.AddMvc(options =>
             {
@@ -67,6 +98,8 @@ namespace RestWithASP_NET
 
             services.AddScoped<IPersonBusiness, PersonBusiness>();
             services.AddScoped<IBookBusiness, BookBusiness>();
+            services.AddScoped<ILoginBusiness, LoginBusiness>();
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped(typeof(IRepository<>), typeof(GenericRepository<>));
         }
 

@@ -2,6 +2,7 @@
 using RestWithASP_NET.Model;
 using RestWithASP_NET.Business;
 using RestWithASP_NET.Data.VO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace RestWithASP_NET.Controllers
 {
@@ -17,6 +18,7 @@ namespace RestWithASP_NET.Controllers
         }
         // GET api/values
         [HttpGet]
+        [Authorize("Bearer")]
         public IActionResult Get()
         {
             return Ok(_bookBusiness.FindAll());
@@ -24,6 +26,7 @@ namespace RestWithASP_NET.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
+        [Authorize("Bearer")]
         public IActionResult Get(long id)
         {
             var Book = _bookBusiness.FindById(id);
@@ -33,6 +36,7 @@ namespace RestWithASP_NET.Controllers
 
         // POST api/values
         [HttpPost]
+        [Authorize("Bearer")]
         public IActionResult Post([FromBody]BookVO book)
         {
             if (book == null) return BadRequest();
@@ -41,6 +45,7 @@ namespace RestWithASP_NET.Controllers
 
         // PUT api/values/5
         [HttpPut]
+        [Authorize("Bearer")]
         public IActionResult Put([FromBody]BookVO book)
         {
             if (book == null) return BadRequest();
@@ -51,6 +56,7 @@ namespace RestWithASP_NET.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
+        [Authorize("Bearer")]
         public IActionResult Delete(long id)
         {
             _bookBusiness.Delete(id);

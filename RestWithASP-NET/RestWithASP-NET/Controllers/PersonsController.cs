@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using RestWithASP_NET.Business;
 using RestWithASP_NET.Data.VO;
 
@@ -16,6 +17,7 @@ namespace RestWithASP_NET.Controllers
         }
         // GET api/values
         [HttpGet]
+        [Authorize("Bearer")]
         public IActionResult Get()
         {
             return Ok(_personBusiness.FindAll());
@@ -23,6 +25,7 @@ namespace RestWithASP_NET.Controllers
 
         // GET api/values/5
         [HttpGet("{id}")]
+        [Authorize("Bearer")]
         public IActionResult Get(long id)
         {
             var person = _personBusiness.FindById(id);
@@ -32,6 +35,7 @@ namespace RestWithASP_NET.Controllers
 
         // POST api/values
         [HttpPost]
+        [Authorize("Bearer")]
         public IActionResult Post([FromBody]PersonVO person)
         {
             if (person == null) return BadRequest();
@@ -40,6 +44,7 @@ namespace RestWithASP_NET.Controllers
 
         // PUT api/values/5
         [HttpPut]
+        [Authorize("Bearer")]
         public IActionResult Put([FromBody]PersonVO person)
         {
             if (person == null) return BadRequest();
@@ -50,6 +55,7 @@ namespace RestWithASP_NET.Controllers
 
         // DELETE api/values/5
         [HttpDelete("{id}")]
+        [Authorize("Bearer")]
         public IActionResult Delete(long id)
         {
             _personBusiness.Delete(id);

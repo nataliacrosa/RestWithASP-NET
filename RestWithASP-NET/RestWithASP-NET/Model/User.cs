@@ -6,7 +6,7 @@ namespace RestWithASP_NET.Model
     {
         public long? Id { get; set; }
         public string Login { get; set; }
-        public string Acess { get; set; }
+        public string AccessKey { get; set; }
 
     }
 }

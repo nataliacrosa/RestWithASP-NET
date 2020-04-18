@@ -18,8 +18,7 @@ namespace RestWithASP_NET.Controllers
         }
 
         // POST api/values
-        [AllowAnonymous]
-        [HttpPost]
+        [HttpPost, AllowAnonymous]
         public object Post([FromBody]User user)
         {
             if (user == null) return BadRequest();

@@ -27,7 +27,7 @@ namespace RestWithASP_NET.Business.Implementattions
             if (user != null && !string.IsNullOrWhiteSpace(user.Login))
             {
                 var baseUser = _repository.FindByLogin(user.Login);
-                credentialsIsValid = (baseUser != null && user.Login == baseUser.Login && user.Acess == baseUser.Acess);
+                credentialsIsValid = (baseUser != null && user.Login == baseUser.Login && user.AccessKey == baseUser.AccessKey);
             }
             if (credentialsIsValid)
             {
