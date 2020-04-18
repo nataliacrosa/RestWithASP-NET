@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1062
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestWithASP-NET", "RestWithASP-NET\RestWithASP-NET.csproj", "{318ED2B7-4540-463A-B04D-8D5146D1459A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestWithASP_NET", "RestWithASP-NET\RestWithASP_NET.csproj", "{318ED2B7-4540-463A-B04D-8D5146D1459A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
