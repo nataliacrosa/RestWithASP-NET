@@ -15,12 +15,27 @@ namespace RestWithASP_NET.Controllers
         {
             _personBusiness = personBusiness;
         }
+
+        [HttpGet("find-by-name")]
+        [Authorize("Bearer")]
+        public IActionResult GetByName([FromQuery] string firstName, [FromQuery] string lastName)
+        {
+            return new OkObjectResult(_personBusiness.FindByName(firstName, lastName));
+        }
+
+        [HttpGet("find-with-paged-search/{sortDirection}/{pageSize}/{page}")]
+        [Authorize("Bearer")]
+        public IActionResult GetPagedSearch([FromQuery] string name, string sortDirection, int pageSize, int page)
+        {                     
+            return new OkObjectResult(_personBusiness.FindWithPagedSearch(name, sortDirection, pageSize, page));
+        }
+
         // GET api/values
         [HttpGet]
         [Authorize("Bearer")]
         public IActionResult Get()
         {
-            return Ok(_personBusiness.FindAll());
+            return new OkObjectResult(_personBusiness.FindAll());
         }
 
         // GET api/values/5

@@ -19,7 +19,7 @@ namespace RestWithASP_NET.Controllers
 
         // POST api/values
         [HttpPost, AllowAnonymous]
-        public object Post([FromBody]User user)
+        public IActionResult Post([FromBody]User user)
         {
             if (user == null) return BadRequest();
             return new ObjectResult(_loginBusiness.FindByLogin(user));
